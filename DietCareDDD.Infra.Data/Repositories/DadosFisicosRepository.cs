@@ -3,7 +3,7 @@ using DietCareDDD.Domain.Interfaces.Repositories;
 
 namespace DietCareDDD.Infra.Data.Repositories
 {
-    class DadosFisicosRepository : RepositoryBase<DadosFisicos>, IDadosFisicosRepository
+    public class DadosFisicosRepository : RepositoryBase<DadosFisicos>, IDadosFisicosRepository
     {
     }
 }

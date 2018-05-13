@@ -3,7 +3,7 @@ using DietCareDDD.Domain.Interfaces.Repositories;
 
 namespace DietCareDDD.Infra.Data.Repositories
 {
-    class UnidadeRepository : RepositoryBase<Unidade>, IUnidadeRepository
+    public class UnidadeRepository : RepositoryBase<Unidade>, IUnidadeRepository
     {
     }
 }

@@ -50,11 +50,24 @@
     <Compile Include="Interfaces\Repositories\IUnidadeRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Services\IAlimentoService.cs" />
+    <Compile Include="Interfaces\Services\IClasseAlimentarService.cs" />
+    <Compile Include="Interfaces\Services\IDadosFisicosService.cs" />
+    <Compile Include="Interfaces\Services\IDiarioService.cs" />
+    <Compile Include="Interfaces\Services\IMetaService.cs" />
+    <Compile Include="Interfaces\Services\IRefeicaoService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\IUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AlimentoService.cs" />
+    <Compile Include="Services\ClasseAlimentarService.cs" />
+    <Compile Include="Services\DadosFisicosService.cs" />
+    <Compile Include="Services\DiarioService.cs" />
+    <Compile Include="Services\MetaService.cs" />
+    <Compile Include="Services\RefeicaoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\UnidadeService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
