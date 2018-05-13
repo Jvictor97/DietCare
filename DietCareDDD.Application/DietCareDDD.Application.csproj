@@ -42,9 +42,23 @@
   <ItemGroup>
     <Compile Include="AlimentoAppService.cs" />
     <Compile Include="AppServiceBase.cs" />
+    <Compile Include="ClasseAlimentarAppService.cs" />
+    <Compile Include="DadosFisicosAppService.cs" />
+    <Compile Include="DiarioAppService.cs" />
     <Compile Include="Interface\IAlimentoAppService.cs" />
     <Compile Include="Interface\IAppServiceBase.cs" />
+    <Compile Include="Interface\IClasseAlimentarAppService.cs" />
+    <Compile Include="Interface\IDadosFisicosAppService.cs" />
+    <Compile Include="Interface\IDiarioAppService.cs" />
+    <Compile Include="Interface\IMetaAppService.cs" />
+    <Compile Include="Interface\IRefeicaoAppService.cs" />
+    <Compile Include="Interface\IUnidadeAppService.cs" />
+    <Compile Include="Interface\IUsuarioAppService.cs" />
+    <Compile Include="MetaAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefeicaoAppService.cs" />
+    <Compile Include="UnidadeAppService.cs" />
+    <Compile Include="UsuarioAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
