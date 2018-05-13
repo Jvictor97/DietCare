@@ -1,33 +1,46 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using DietCareDDD.Application.Interface;
 using DietCareDDD.Domain.Entities;
-using DietCareDDD.Domain.Interfaces;
-using DietCareDDD.Infra.Data.Repositories;
 using DietCareDDD.MVC.ViewModels;
 
 namespace DietCareDDD.MVC.Controllers
 {
     public class AlimentosController : Controller
     {
-        private readonly AlimentoRepository _alimentoRepository = new AlimentoRepository();
+        private readonly IAlimentoAppService _alimentoApp;
+
+        public AlimentosController(IAlimentoAppService alimentoApp)
+        {
+            _alimentoApp = alimentoApp;
+        }
+
         // GET: Alimentos
         public ActionResult Index()
         {
-            var alimentos = Mapper.Map<IEnumerable<Alimento>, IEnumerable<AlimentoViewModel>>(_alimentoRepository.GetAll()); 
+            var alimentos = Mapper.Map<IEnumerable<Alimento>, IEnumerable<AlimentoViewModel>>(_alimentoApp.GetAll()); 
             return View(alimentos);
         }
 
         // GET: Alimentos/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var alimento = _alimentoApp.GetById(id);
+            var alimentoViewModel = Mapper.Map<Alimento, AlimentoViewModel>(alimento);
+            return View(alimentoViewModel);
         }
 
         // GET: Alimentos/Create
         public ActionResult Create()
         {
+            /*
+            ViewBag.Alimentos = new SelectList(
+                _alimentoApp.GetAll(),
+                "id_u"
+            );
+            */
+
             return View();
         }
 
@@ -39,7 +52,7 @@ namespace DietCareDDD.MVC.Controllers
             if (ModelState.IsValid)
             {
                 var alimentoDomain = Mapper.Map<AlimentoViewModel, Alimento>(alimento);
-                _alimentoRepository.Add(alimentoDomain);
+                _alimentoApp.Add(alimentoDomain);
 
                 return RedirectToAction("Index");
             }
@@ -50,45 +63,43 @@ namespace DietCareDDD.MVC.Controllers
         // GET: Alimentos/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var alimento = _alimentoApp.GetById(id);
+            var alimentoViewModel = Mapper.Map<Alimento, AlimentoViewModel>(alimento);
+            return View(alimentoViewModel);
         }
 
         // POST: Alimentos/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(AlimentoViewModel alimento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var alimentoDomain = Mapper.Map<AlimentoViewModel, Alimento>(alimento);
+                _alimentoApp.Update(alimentoDomain);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            ModelState.AddModelError("ErroEdit", "Não foi possível alterar o Registro!"); // Testando mensagens de erro
+            return View(alimento);
         }
 
         // GET: Alimentos/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var alimento = _alimentoApp.GetById(id);
+            var alimentoViewModel = Mapper.Map<Alimento, AlimentoViewModel>(alimento);
+            return View(alimentoViewModel);
         }
 
         // POST: Alimentos/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var alimento = _alimentoApp.GetById(id);
+            _alimentoApp.Remove(alimento);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

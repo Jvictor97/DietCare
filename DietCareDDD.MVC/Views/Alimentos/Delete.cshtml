@@ -1,0 +1,80 @@
+﻿@model DietCareDDD.MVC.ViewModels.AlimentoViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AlimentoViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.alimento_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alimento_nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alimento_calorias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alimento_calorias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alimento_carboidratos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alimento_carboidratos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alimento_proteinas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alimento_proteinas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alimento_gorduras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alimento_gorduras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alimento_porcao_base)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alimento_porcao_base)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_unid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_unid)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

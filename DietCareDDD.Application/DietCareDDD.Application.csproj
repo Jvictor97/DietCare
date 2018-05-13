@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlimentoAppService.cs" />
+    <Compile Include="AppServiceBase.cs" />
+    <Compile Include="Interface\IAlimentoAppService.cs" />
+    <Compile Include="Interface\IAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DietCareDDD.Domain\DietCareDDD.Domain.csproj">
+      <Project>{d57bfbcf-e62f-4b92-b5d8-b9c73b8c0714}</Project>
+      <Name>DietCareDDD.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

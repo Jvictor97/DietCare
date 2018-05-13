@@ -19,5 +19,15 @@ namespace DietCareDDD.Domain.Services
             return _alimentoRepository.BuscaPorNome(nome);
         }
 
+        // Caso haja algum método que interage com as entidades na tabela
+        // Executar a chamada aqui
+        // Exemplo no Vídeo:
+        /*
+         *  public IEnumerable<Cliente> ObterClientesEspeciais(IEnumerable<Cliente> clientes)
+         *  {
+         *      return clientes.Where(c => c.ClienteEspecial(c));
+         *  }
+         */
+         // Obs: o método ClienteEspecial retorna bool e foi declarado na classe Cliente
     }
 }
