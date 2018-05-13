@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DietCareDDD.MVC.AutoMapper;
 
 namespace DietCareDDD.MVC
 {
@@ -16,6 +17,8 @@ namespace DietCareDDD.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            // Inicializa o Mapeamento de Classes para ViewModels
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }
