@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DietCareDDD.Domain.Interfaces;
+using DietCareDDD.Domain.Interfaces.Repositories;
 using DietCareDDD.Infra.Data.Context;
 
 namespace DietCareDDD.Infra.Data.Repositories

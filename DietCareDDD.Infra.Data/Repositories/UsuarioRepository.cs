@@ -1,5 +1,6 @@
 ﻿using DietCareDDD.Domain.Entities;
 using DietCareDDD.Domain.Interfaces;
+using DietCareDDD.Domain.Interfaces.Repositories;
 
 namespace DietCareDDD.Infra.Data.Repositories
 {

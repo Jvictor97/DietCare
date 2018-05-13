@@ -1,4 +1,4 @@
-﻿@model List<DietCareDDD.MVC.ViewModels.AlimentoViewModel>
+﻿@model IEnumerable<DietCareDDD.MVC.ViewModels.AlimentoViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,25 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().alimento_calorias)
+            @Html.DisplayNameFor(model => model.alimento_nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().alimento_calorias)
+            @Html.DisplayNameFor(model => model.alimento_calorias)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().alimento_carboidratos)
+            @Html.DisplayNameFor(model => model.alimento_carboidratos)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().alimento_proteinas)
+            @Html.DisplayNameFor(model => model.alimento_proteinas)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().alimento_gorduras)
+            @Html.DisplayNameFor(model => model.alimento_gorduras)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().alimento_porcao_base)
+            @Html.DisplayNameFor(model => model.alimento_porcao_base)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().id_unid)
+            @Html.DisplayNameFor(model => model.id_unid)
         </th>
         <th></th>
     </tr>

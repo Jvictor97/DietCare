@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using DietCareDDD.Domain.Entities;
-using DietCareDDD.Domain.Interfaces;
+using DietCareDDD.Domain.Interfaces.Repositories;
 
 namespace DietCareDDD.Infra.Data.Repositories
 {
     public class AlimentoRepository : RepositoryBase<Alimento>, IAlimentoRepository
     {
-        public List<Alimento> BuscaPorNome(string nome)
+        public IEnumerable<Alimento> BuscaPorNome(string nome)
         {
-            return Db.Alimentos.Where(a => a.alimento_nome.ToUpper().Contains(nome.ToUpper())).ToList();
+            return Db.Alimentos.Where(a => a.alimento_nome.ToUpper().Contains(nome.ToUpper()));
         }
     }
 }

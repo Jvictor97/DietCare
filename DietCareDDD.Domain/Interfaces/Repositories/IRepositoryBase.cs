@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DietCareDDD.Domain.Interfaces
+namespace DietCareDDD.Domain.Interfaces.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

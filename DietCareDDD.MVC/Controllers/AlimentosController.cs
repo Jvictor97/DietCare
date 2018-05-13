@@ -15,7 +15,7 @@ namespace DietCareDDD.MVC.Controllers
         // GET: Alimentos
         public ActionResult Index()
         {
-            List<AlimentoViewModel> alimentos = Mapper.Map<List<Alimento>, List<AlimentoViewModel>>(_alimentoRepository.GetAll().ToList()); 
+            var alimentos = Mapper.Map<IEnumerable<Alimento>, IEnumerable<AlimentoViewModel>>(_alimentoRepository.GetAll()); 
             return View(alimentos);
         }
 
@@ -33,18 +33,18 @@ namespace DietCareDDD.MVC.Controllers
 
         // POST: Alimentos/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(AlimentoViewModel alimento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var alimentoDomain = Mapper.Map<AlimentoViewModel, Alimento>(alimento);
+                _alimentoRepository.Add(alimentoDomain);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(alimento);
         }
 
         // GET: Alimentos/Edit/5
