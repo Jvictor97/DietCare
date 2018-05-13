@@ -63,7 +63,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlimentoRepository.cs" />
+    <Compile Include="Repositories\ClasseAlimentarRepository.cs" />
+    <Compile Include="Repositories\DadosFisicosRepository.cs" />
+    <Compile Include="Repositories\DiarioRepository.cs" />
+    <Compile Include="Repositories\MetaRepository.cs" />
+    <Compile Include="Repositories\RefeicaoRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\UnidadeRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>

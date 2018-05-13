@@ -41,7 +41,13 @@
     <Compile Include="Entities\Unidade.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Interfaces\Repositories\IAlimentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IClasseAlimentarRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IDadosFisicosRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IDiarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IMetaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRefeicaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\IUnidadeRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Services\IAlimentoService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />

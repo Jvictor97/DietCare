@@ -10,10 +10,12 @@ namespace DietCareDDD.MVC.Controllers
     public class AlimentosController : Controller
     {
         private readonly IAlimentoAppService _alimentoApp;
+        private readonly IUnidadeAppService  _unidadeApp;
 
-        public AlimentosController(IAlimentoAppService alimentoApp)
+        public AlimentosController(IAlimentoAppService alimentoApp, IUnidadeAppService unidadeApp)
         {
             _alimentoApp = alimentoApp;
+            _unidadeApp = unidadeApp;
         }
 
         // GET: Alimentos
@@ -34,13 +36,11 @@ namespace DietCareDDD.MVC.Controllers
         // GET: Alimentos/Create
         public ActionResult Create()
         {
-            /*
-            ViewBag.Alimentos = new SelectList(
-                _alimentoApp.GetAll(),
-                "id_u"
+            ViewBag.UnidadeId = new SelectList(
+                _unidadeApp.GetAll(), // Todas as unidades
+                "id_unid",             // Valor de cada objeto na lista - Referencia a classe Unidade
+                "unid_nome"            // Valor a ser exibido na lista - Referencia a classe Unidade
             );
-            */
-
             return View();
         }
 
@@ -57,6 +57,12 @@ namespace DietCareDDD.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UnidadeId = new SelectList(
+                _unidadeApp.GetAll(), // Todas as unidades
+                "id_unid",             // Valor de cada objeto na lista - Referencia a classe Unidade
+                "unid_nome"            // Valor a ser exibido na lista - Referencia a classe Unidade
+            );
+
             return View(alimento);
         }
 
@@ -65,6 +71,13 @@ namespace DietCareDDD.MVC.Controllers
         {
             var alimento = _alimentoApp.GetById(id);
             var alimentoViewModel = Mapper.Map<Alimento, AlimentoViewModel>(alimento);
+
+            ViewBag.UnidadeId = new SelectList(
+                _unidadeApp.GetAll(), // Todas as unidades
+                "id_unid",             // Valor de cada objeto na lista - Referencia a classe Unidade
+                "unid_nome"            // Valor a ser exibido na lista - Referencia a classe Unidade
+            );
+
             return View(alimentoViewModel);
         }
 

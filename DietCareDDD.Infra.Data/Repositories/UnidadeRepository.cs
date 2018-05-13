@@ -3,7 +3,7 @@ using DietCareDDD.Domain.Interfaces.Repositories;
 
 namespace DietCareDDD.Infra.Data.Repositories
 {
-    public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
+    class UnidadeRepository : RepositoryBase<Unidade>, IUnidadeRepository
     {
     }
 }
