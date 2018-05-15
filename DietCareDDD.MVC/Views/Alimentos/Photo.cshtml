@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Web.UI.WebControls.WebParts
+@using Microsoft.Ajax.Utilities
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     //Layout = null;
 }
@@ -6,7 +8,21 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+
+        @if (ViewBag.Alimento != null)
+        {
+            <script>
+                $(function() {
+                    $("#clarifaiResponse").html("O alimento escolhido é: "+"@ViewBag.Alimento");
+                });
+            </script>
+        }
+
 <script>
+    $(function() {
+        abreVideo();
+    });
+
     function abreVideo(){
         var canvas = document.getElementById('canvas');
         var video = document.getElementById('video');
@@ -26,43 +42,43 @@
         var download = document.getElementById('download');
         var context = canvas.getContext('2d');
         context.drawImage(video, 0, 0, 320, 240);
-        //download.setAttribute('href', 
-        //var image = canvas.toDataURL('image/png');
+        
         var imageBase64 = canvas.toDataURL('image/png');
-        //alert(imageBase64);
+        
         download.setAttribute('href', imageBase64);
         download.setAttribute('class', 'btn btn-info');
         imageBase64 = imageBase64.replace('data:image/png;base64,', '');
-        //alert(imageBase64);
+       
         $("#imageData").val(imageBase64);
-        //$("#ImageForm").submit();
-        //alert(image);
-        /*
-        $.post(
-            "/Alimentos/Photo",
-            { canvas:  "teste"},
-            function(data) {
-                console.log(data);
-            });*/
+        $("#ImageForm").submit();
+
     }
 
 </script>
 
-<h2> Inserir Alimento Por Foto </h2>
+<h2> Inserir Alimento por Foto </h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <video id="video" width="320" height="240" autoplay></video>
+            <br>
+            <!-- <button onclick="abreVideo()" class="btn btn-primary">Abrir Câmera</button> -->
+            <button id="snap" onclick="tiraFoto()" class="btn btn-danger">Tirar Foto</button>
+            <a id="download" download="selfie.png" class="btn btn-default disabled">Baixar Foto</a>
 
-<video id="video" width="320" height="240" autoplay></video>
-<br>
-<button onclick="abreVideo()" class="btn btn-primary">Abrir Câmera</button>
-<button id="snap" onclick="tiraFoto()" class="btn btn-danger">Tirar Foto</button>
-<a id="download" download="selfie.png" class="btn btn-default disabled">Baixar Foto</a>
-<br>
-<br/>
-<canvas id="canvas" width="320" height="240"></canvas>
+        </div>
+        <div class="col-sm-8">
+            <canvas id="canvas" width="320" height="240"></canvas>
+        </div>
+    </div>
+</div>
 
-@using (Html.BeginForm("Photo", "Alimentos", FormMethod.Post, new {id = "ImageForm" , enctype = "multipart/form-data"}))
+
+<hr/>
+<p id="clarifaiResponse"></p>
+
+@using (Ajax.BeginForm("Photo", "Alimentos", new AjaxOptions {HttpMethod = "POST"}, new { id = "ImageForm" }))
 {
-    @Html.AntiForgeryToken()
-
     <input type="hidden" name="imageData" id="imageData"/>
-    <input value="Enviar" type="submit" class="btn btn-success"/>
+    <!--<input value="Enviar" type="submit" class="btn btn-success"/>-->
 }

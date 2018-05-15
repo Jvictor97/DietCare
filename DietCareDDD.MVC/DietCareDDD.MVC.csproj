@@ -261,9 +261,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DietCareDDD.API\DietCareDDD.API.csproj">
+    <ProjectReference Include="..\DietCareDDD.API\DietCareDDD.Clarifai.csproj">
       <Project>{af676e06-1813-4db7-b405-2d7d536e74d7}</Project>
-      <Name>DietCareDDD.API</Name>
+      <Name>DietCareDDD.Clarifai</Name>
     </ProjectReference>
     <ProjectReference Include="..\DietCareDDD.Application\DietCareDDD.Application.csproj">
       <Project>{a29c2457-fc81-429f-94f1-96e891c62f90}</Project>

@@ -9,6 +9,8 @@ using DietCareDDD.Application.Interface;
 using DietCareDDD.API.Clarifai;
 using DietCareDDD.Domain.Entities;
 using DietCareDDD.MVC.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DietCareDDD.MVC.Controllers
 {
@@ -128,7 +130,7 @@ namespace DietCareDDD.MVC.Controllers
 
         // POST: Alimentos/Photo
         [HttpPost]
-        public async Task Photo(string imageData)
+        public async Task<ActionResult> Photo(string imageData)
         {
             var caminho = Path.Combine(Server.MapPath("~/Imagens"), "foto.png");
             byte[] data = Convert.FromBase64String(imageData);
@@ -138,6 +140,11 @@ namespace DietCareDDD.MVC.Controllers
 
             var json = await ClarifaiCall.Predict(caminho);
             System.IO.File.WriteAllText(caminhoJson, json);
+
+            JObject jsonObject = JObject.FromObject(JsonConvert.DeserializeObject(json));
+            var nomeAlimento = jsonObject["outputs"][0]["data"]["concepts"][0]["name"].ToString();
+            ViewBag.Alimento = nomeAlimento;
+            return View();
         }
     }
 }
