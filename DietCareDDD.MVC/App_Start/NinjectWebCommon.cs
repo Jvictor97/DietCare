@@ -70,12 +70,14 @@ namespace DietCareDDD.MVC
             // Injeção para Application
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(IAppServiceBase<>));
             kernel.Bind<IAlimentoAppService>().To<AlimentoAppService>();
+            kernel.Bind<IUnidadeAppService>().To<UnidadeAppService>();
             
             //TODO: Finalizar adição de Depenências de Application
 
             // Injeção para Services 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IAlimentoService>().To<AlimentoService>();
+            kernel.Bind<IUnidadeService>().To<UnidadeService>();
 
             //TODO: Finalizar adição de Depenências de Services
 
@@ -83,6 +85,7 @@ namespace DietCareDDD.MVC
             // Injeção para Repositories
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IAlimentoRepository>().To<AlimentoRepository>();
+            kernel.Bind<IUnidadeRepository>().To<UnidadeRepository>();
 
             //TODO: Finalizar adição de Depenências de Repositories
 

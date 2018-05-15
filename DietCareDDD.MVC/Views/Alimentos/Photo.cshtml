@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script>
+    function abreVideo(){
+        var canvas = document.getElementById('canvas');
+        var video = document.getElementById('video');
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                var mediaSource = new MediaStream(stream);
+                video.srcObject = mediaSource;                    
+                //video.src = window.URL.createObjectURL(stream); // Deprecated
+                video.play();
+            });
+        }
+    }        
+            
+    function tiraFoto() {
+        var download = document.getElementById('download');
+        var context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, 320, 240);
+        //download.setAttribute('href', 
+        //var image = canvas.toDataURL('image/png');
+        var imageBase64 = canvas.toDataURL('image/png');
+        //alert(imageBase64);
+        download.setAttribute('href', imageBase64);
+        download.setAttribute('class', 'btn btn-info');
+        imageBase64 = imageBase64.replace('data:image/png;base64,', '');
+        //alert(imageBase64);
+        $("#imageData").val(imageBase64);
+        //$("#ImageForm").submit();
+        //alert(image);
+        /*
+        $.post(
+            "/Alimentos/Photo",
+            { canvas:  "teste"},
+            function(data) {
+                console.log(data);
+            });*/
+    }
+
+</script>
+
+<h2> Inserir Alimento Por Foto </h2>
+
+<video id="video" width="320" height="240" autoplay></video>
+<br>
+<button onclick="abreVideo()" class="btn btn-primary">Abrir Câmera</button>
+<button id="snap" onclick="tiraFoto()" class="btn btn-danger">Tirar Foto</button>
+<a id="download" download="selfie.png" class="btn btn-default disabled">Baixar Foto</a>
+<br>
+<br/>
+<canvas id="canvas" width="320" height="240"></canvas>
+
+@using (Html.BeginForm("Photo", "Alimentos", FormMethod.Post, new {id = "ImageForm" , enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="imageData" id="imageData"/>
+    <input value="Enviar" type="submit" class="btn btn-success"/>
+}

@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using DietCareDDD.Application.Interface;
+using DietCareDDD.API.Clarifai;
 using DietCareDDD.Domain.Entities;
 using DietCareDDD.MVC.ViewModels;
 
@@ -36,11 +41,12 @@ namespace DietCareDDD.MVC.Controllers
         // GET: Alimentos/Create
         public ActionResult Create()
         {
-            ViewBag.UnidadeId = new SelectList(
+            ViewBag.id_unid = new SelectList(
                 _unidadeApp.GetAll(), // Todas as unidades
-                "id_unid",             // Valor de cada objeto na lista - Referencia a classe Unidade
-                "unid_nome"            // Valor a ser exibido na lista - Referencia a classe Unidade
+                "id_unid",            // Valor de cada objeto na lista - Referencia a classe Unidade
+                "unid_simbolo"        // Valor a ser exibido na lista - Referencia a classe Unidade
             );
+
             return View();
         }
 
@@ -56,13 +62,12 @@ namespace DietCareDDD.MVC.Controllers
 
                 return RedirectToAction("Index");
             }
-
-            ViewBag.UnidadeId = new SelectList(
+            ViewBag.id_unid = new SelectList(
                 _unidadeApp.GetAll(), // Todas as unidades
-                "id_unid",             // Valor de cada objeto na lista - Referencia a classe Unidade
-                "unid_nome"            // Valor a ser exibido na lista - Referencia a classe Unidade
+                "id_unid",            // Valor de cada objeto na lista - Referencia a classe Unidade
+                "unid_simbolo",       // Valor a ser exibido na lista - Referencia a classe Unidade
+                alimento.id_unid      // Valor selecionado no Drop Down
             );
-
             return View(alimento);
         }
 
@@ -72,10 +77,10 @@ namespace DietCareDDD.MVC.Controllers
             var alimento = _alimentoApp.GetById(id);
             var alimentoViewModel = Mapper.Map<Alimento, AlimentoViewModel>(alimento);
 
-            ViewBag.UnidadeId = new SelectList(
+            ViewBag.id_unid = new SelectList(
                 _unidadeApp.GetAll(), // Todas as unidades
-                "id_unid",             // Valor de cada objeto na lista - Referencia a classe Unidade
-                "unid_nome"            // Valor a ser exibido na lista - Referencia a classe Unidade
+                "id_unid",            // Valor de cada objeto na lista - Referencia a classe Unidade
+                "unid_simbolo"        // Valor a ser exibido na lista - Referencia a classe Unidade
             );
 
             return View(alimentoViewModel);
@@ -113,6 +118,26 @@ namespace DietCareDDD.MVC.Controllers
             _alimentoApp.Remove(alimento);
 
             return RedirectToAction("Index");
+        }
+
+        // GET: Alimentos/Photo
+        public ActionResult Photo()
+        {
+            return View();
+        }
+
+        // POST: Alimentos/Photo
+        [HttpPost]
+        public async Task Photo(string imageData)
+        {
+            var caminho = Path.Combine(Server.MapPath("~/Imagens"), "foto.png");
+            byte[] data = Convert.FromBase64String(imageData);
+            System.IO.File.WriteAllBytes(caminho, data);
+
+            var caminhoJson = Path.Combine(Server.MapPath("~/Imagens"), "food.json");
+
+            var json = await ClarifaiCall.Predict(caminho);
+            System.IO.File.WriteAllText(caminhoJson, json);
         }
     }
 }
