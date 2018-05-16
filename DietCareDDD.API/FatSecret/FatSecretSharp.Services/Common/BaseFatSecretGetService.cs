@@ -118,7 +118,6 @@ namespace FatSecretSharp.Services.Common
             if (!serviceDone && (DateTime.Now.Subtract(start).TotalSeconds >= 20))
             {
                 // Set a default response if we timed out.
-                // TODO: throw a timeout exception?
                 response = default(TResponse);
             }
 

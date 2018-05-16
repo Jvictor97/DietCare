@@ -23,7 +23,6 @@ namespace FatSecretSharp.Services
 
         protected override string CreateRequestUrl(FoodSearchRequest request)
         {
-            // TODO: check for empty search expression?
 
             var parms = new Dictionary<string, string>(GenerateMethodAndFormatParmsDictionary())
             {                
