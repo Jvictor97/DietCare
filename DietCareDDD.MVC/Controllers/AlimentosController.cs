@@ -134,12 +134,12 @@ namespace DietCareDDD.MVC.Controllers
         {
             var caminho = Path.Combine(Server.MapPath("~/Imagens"), "foto.png");
             byte[] data = Convert.FromBase64String(imageData);
-            System.IO.File.WriteAllBytes(caminho, data);
+            //System.IO.File.WriteAllBytes(caminho, data);
 
-            var caminhoJson = Path.Combine(Server.MapPath("~/Imagens"), "food.json");
+            //var caminhoJson = Path.Combine(Server.MapPath("~/Imagens"), "food.json");
 
-            var json = await ClarifaiCall.Predict(caminho);
-            System.IO.File.WriteAllText(caminhoJson, json);
+            var json = await ClarifaiCall.Predict(data);
+            //System.IO.File.WriteAllText(caminhoJson, json);
 
             JObject jsonObject = JObject.FromObject(JsonConvert.DeserializeObject(json));
             var nomeAlimento = jsonObject["outputs"][0]["data"]["concepts"][0]["name"].ToString();

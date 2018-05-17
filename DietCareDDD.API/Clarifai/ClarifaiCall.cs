@@ -10,12 +10,12 @@ namespace DietCareDDD.API.Clarifai
 {
     public class ClarifaiCall
     {
-        public static async Task<string> Predict(string path)
+        public static async Task<string> Predict(byte[] byteImage)
         {
             var client = new ClarifaiClient("d7b04a99342b4c9ea11f5f127879583f");
 
             var res = await client.PublicModels.FoodModel.Predict(
-                    new ClarifaiFileImage(File.ReadAllBytes(path)))
+                    new ClarifaiFileImage(byteImage))
                 .ExecuteAsync();
 
             return res.RawBody;
