@@ -1,31 +1,259 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<head>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DietCare&reg;</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="@Url.Content("~/Content/Home/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="@Url.Content("~/Content/Home/vendor/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="@Url.Content("~/Content/Home/vendor/magnific-popup/magnific-popup.css")" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="@Url.Content("~/Content/Home/css/creative.css")" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Diet Care</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Facilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Metas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead text-center text-white d-flex">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1>
+                        <strong>Diet Care</strong>
+                    </h1>
+                    <hr>
+                </div>
+                <div class="col-lg-8 mx-auto">
+                    <p class="text-faded mb-5">
+                        A ferramenta DietCare busca inovar no ramo de alimentação e dieta
+                        a partir da facilitação de acesso e garantia de acessibilidade a todos os usuários
+                    </p>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Saiba Mais!</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Facilidades</h2>
+                    <hr class="my-4">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box mt-5 mx-auto">
+                        <i class="fa fa-4x fa-camera text-primary mb-3 sr-icons"></i>
+                        <h3 class="mb-3">Reconhecimento de Imagens</h3>
+                        <p class="text-muted mb-0">A tecnologia Clarifai&reg; identifica seus alimentos em um único clique</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box mt-5 mx-auto">
+                        <i class="fa fa-4x fa-microphone text-primary mb-3 sr-icons"></i>
+                        <h3 class="mb-3">Reconhecimento de Voz</h3>
+                        <p class="text-muted mb-0">Cadastre sua dieta por voz com as facilidades de reconhecimento da IBM&reg;</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box mt-5 mx-auto">
+                        <i class="fa fa-4x fa-database text-primary mb-3 sr-icons"></i>
+                        <h3 class="mb-3">Vasta Base de Dados</h3>
+                        <p class="text-muted mb-0">Tenha a confiabilidade das informações nutricionais do FatSecret&reg;</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box mt-5 mx-auto">
+                        <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
+                        <h3 class="mb-3">Cuidado com a sua Saúde</h3>
+                        <p class="text-muted mb-0">Nossa equipe se preocupa em oferecer os melhores recursos para a sua saúde</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="p-0" id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters popup-gallery">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="@Url.Content("~/Content/Home/img/portfolio/fullsize/1.jpg")">
+                    <img class="img-fluid" src="@Url.Content("~/Content/Home/img/portfolio/thumbnails/1.jpg")" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="@Url.Content("~/Content/Home/img/portfolio/fullsize/2.jpg")">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Home/img/portfolio/thumbnails/2.jpg")" alt=""/>
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="@Url.Content("~/Content/Home/img/portfolio/fullsize/3.jpg")">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Home/img/portfolio/thumbnails/3.jpg")" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="@Url.Content("~/Content/Home/img/portfolio/fullsize/4.jpg")">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Home/img/portfolio/thumbnails/4.jpg")" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="@Url.Content("~/Content/Home/img/portfolio/fullsize/5.jpg")">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Home/img/portfolio/thumbnails/5.jpg")" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="@Url.Content("~/Content/Home/img/portfolio/fullsize/6.jpg")">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Home/img/portfolio/thumbnails/6.jpg")" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-heading">Entre em Contato!</h2>
+                    <hr class="my-4">
+                    <p class="mb-5">Deseja tirar uma dúvida ou realizar uma parceria?<br> Encontre nossos analistas por telefone ou e-mail!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center">
+                    <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+                    <p>(11) 1234-5678</p>
+                </div>
+                <div class="col-lg-4 mr-auto text-center">
+                    <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
+                    <p>
+                        <a href="mailto:your-email@your-domain.com">contatomvp@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="@Url.Content("~/Content/Home/vendor/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/Home/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/Home/vendor/jquery-easing/jquery.easing.min.js")"></script>
+    <script src="@Url.Content("~/Content/Home/vendor/scrollreveal/scrollreveal.min.js")"></script>
+    <script src="@Url.Content("~/Content/Home/vendor/magnific-popup/jquery.magnific-popup.min.js")"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="@Url.Content("~/Content/Home/js/creative.min.js")"></script>
+
+</body>
+
+</html>
