@@ -40,7 +40,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto" style="float: left;">
+                    <li class="nav-item meu-menu"><a class="nav-link">@Html.ActionLink("Home", "Index", "Home")</a></li>
+                    <li class="nav-item meu-menu"><a class="nav-link">@Html.ActionLink("Sobre", "About", "Home")</a></li>
+                    <li class="nav-item meu-menu"><a class="nav-link">@Html.ActionLink("Contato", "Contact", "Home")</a></li>
+                    <li class="nav-item meu-menu"><a class="nav-link">@Html.ActionLink("Alimentos", "Index", "Alimentos")</a></li>
+                    <li class="nav-item meu-menu"><a class="nav-link">@Html.ActionLink("Foto", "Photo", "Alimentos")</a></li>
+                </ul>
+                
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item meu-menu"><a class="nav-link js-scroll-trigger">@Html.ActionLink("Home", "Index", "Home")</a></li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#services">Facilidades</a>
                     </li>
