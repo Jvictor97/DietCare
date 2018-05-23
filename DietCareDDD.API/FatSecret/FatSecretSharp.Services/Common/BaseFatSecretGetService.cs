@@ -109,17 +109,17 @@ namespace FatSecretSharp.Services.Common
             startAction(service);
 
             DateTime start = DateTime.Now;
-            // Start polling.  Wait a maximum of 20 seconds.
-            while (!serviceDone && (DateTime.Now.Subtract(start).TotalSeconds < 20))
+            // Start polling.  Wait a maximum of 200 seconds.
+            while (!serviceDone && (DateTime.Now.Subtract(start).TotalSeconds < 200))
             {   
                 Thread.Sleep(1000);
             }
 
-            if (!serviceDone && (DateTime.Now.Subtract(start).TotalSeconds >= 20))
-            {
-                // Set a default response if we timed out.
-                response = default(TResponse);
-            }
+            //if (!serviceDone && (DateTime.Now.Subtract(start).TotalSeconds >= 20))
+            //{
+            //    // Set a default response if we timed out.
+            //    response = default(TResponse);
+            //}
 
             // Remove our handlers to prevent future manipulation.
             service.GotError -= gotErr;

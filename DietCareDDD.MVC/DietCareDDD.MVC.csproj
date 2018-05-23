@@ -351,6 +351,10 @@
       <Project>{af676e06-1813-4db7-b405-2d7d536e74d7}</Project>
       <Name>DietCareDDD.Clarifai</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DietCareDDD.API\FatSecret\FatSecretSharp.Services\FatSecretSharp.Services.csproj">
+      <Project>{7ee9d131-8463-4e0b-b04c-4dec49372819}</Project>
+      <Name>FatSecretSharp.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DietCareDDD.Application\DietCareDDD.Application.csproj">
       <Project>{a29c2457-fc81-429f-94f1-96e891c62f90}</Project>
       <Name>DietCareDDD.Application</Name>
@@ -358,6 +362,10 @@
     <ProjectReference Include="..\DietCareDDD.Domain\DietCareDDD.Domain.csproj">
       <Project>{d57bfbcf-e62f-4b92-b5d8-b9c73b8c0714}</Project>
       <Name>DietCareDDD.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DietCareDDD.FatSecret\DietCareDDD.FatSecret.csproj">
+      <Project>{1b0061cc-aa09-4de5-aa51-781585abe6d9}</Project>
+      <Name>DietCareDDD.FatSecret</Name>
     </ProjectReference>
     <ProjectReference Include="..\DietCareDDD.Infra.Data\DietCareDDD.Infra.Data.csproj">
       <Project>{89e90897-33c2-4e46-9770-ca5e8ef16317}</Project>

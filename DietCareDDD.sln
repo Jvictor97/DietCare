@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietCareDDD.Clarifai", "Die
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FatSecretSharp.Services", "DietCareDDD.API\FatSecret\FatSecretSharp.Services\FatSecretSharp.Services.csproj", "{7EE9D131-8463-4E0B-B04C-4DEC49372819}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietCareDDD.FatSecret", "DietCareDDD.FatSecret\DietCareDDD.FatSecret.csproj", "{1B0061CC-AA09-4DE5-AA51-781585ABE6D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{7EE9D131-8463-4E0B-B04C-4DEC49372819}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EE9D131-8463-4E0B-B04C-4DEC49372819}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EE9D131-8463-4E0B-B04C-4DEC49372819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B0061CC-AA09-4DE5-AA51-781585ABE6D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0061CC-AA09-4DE5-AA51-781585ABE6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0061CC-AA09-4DE5-AA51-781585ABE6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0061CC-AA09-4DE5-AA51-781585ABE6D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +80,6 @@ Global
 		{A29C2457-FC81-429F-94F1-96E891C62F90} = {ABE928B8-4FDF-48F4-87DC-A7A46880B1FB}
 		{AF676E06-1813-4DB7-B405-2D7D536E74D7} = {F172A8BC-5580-44BB-9E27-53876D86A72B}
 		{7EE9D131-8463-4E0B-B04C-4DEC49372819} = {F172A8BC-5580-44BB-9E27-53876D86A72B}
+		{1B0061CC-AA09-4DE5-AA51-781585ABE6D9} = {F172A8BC-5580-44BB-9E27-53876D86A72B}
 	EndGlobalSection
 EndGlobal

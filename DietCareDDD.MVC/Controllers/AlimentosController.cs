@@ -8,7 +8,10 @@ using AutoMapper;
 using DietCareDDD.Application.Interface;
 using DietCareDDD.API.Clarifai;
 using DietCareDDD.Domain.Entities;
+using DietCareDDD.FatSecret;
 using DietCareDDD.MVC.ViewModels;
+using FatSecretSharp.Services;
+using FatSecretSharp.Services.Requests;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -144,6 +147,33 @@ namespace DietCareDDD.MVC.Controllers
             JObject jsonObject = JObject.FromObject(JsonConvert.DeserializeObject(json));
             var nomeAlimento = jsonObject["outputs"][0]["data"]["concepts"][0]["name"].ToString();
             ViewBag.Alimento = nomeAlimento;
+
+            //Constant consumer Key and Shared Secret for FatSecret API
+            //const string consumerKey = "89a75f2dda9748d08cc87d573992fecb";
+            //const string consumerSecret = "5e1b6dc6e9e84451bc265d633b9fc0de";
+
+            //var foodSearch = new FoodSearch(consumerKey, consumerSecret);
+
+            //var response = foodSearch.GetResponseSynchronously(new FoodSearchRequest()
+            //{
+            //    SearchExpression = nomeAlimento
+            //});
+
+            FatSecretAPI fatsecret = new FatSecretAPI();
+
+            string response = await fatsecret.buscarAlimento(nomeAlimento);
+
+            //ViewBag.FatSecret = response.foods.food[0].food_name;
+            /*
+            if (response.HasResults)
+            {
+                Console.WriteLine("Got " + response.foods.food.Count + " Results: \n\n");
+                var form = "id: {0}, \n - type: {1}, \n - name: {2}, \n - description: {3}";
+                foreach (var food in response.foods.food)
+                {
+                    Console.WriteLine(String.Format(form, food.food_id, food.food_type, food.food_name, food.food_description));
+                }
+            }*/
             return View();
         }
     }
