@@ -137,16 +137,14 @@ namespace DietCareDDD.MVC.Controllers
         {
             var caminho = Path.Combine(Server.MapPath("~/Imagens"), "foto.png");
             byte[] data = Convert.FromBase64String(imageData);
-            //System.IO.File.WriteAllBytes(caminho, data);
 
-            //var caminhoJson = Path.Combine(Server.MapPath("~/Imagens"), "food.json");
-
-            var json = await ClarifaiCall.Predict(data);
+            /*var json = await ClarifaiCall.Predict(data); TODO: DESCOMENTAR */
+            
             //System.IO.File.WriteAllText(caminhoJson, json);
 
-            JObject jsonObject = JObject.FromObject(JsonConvert.DeserializeObject(json));
+            /* JObject jsonObject = JObject.FromObject(JsonConvert.DeserializeObject(json)); TODO: DESCOMENTAR
             var nomeAlimento = jsonObject["outputs"][0]["data"]["concepts"][0]["name"].ToString();
-            ViewBag.Alimento = nomeAlimento;
+            ViewBag.Alimento = nomeAlimento; */
 
             //Constant consumer Key and Shared Secret for FatSecret API
             //const string consumerKey = "89a75f2dda9748d08cc87d573992fecb";
@@ -161,19 +159,10 @@ namespace DietCareDDD.MVC.Controllers
 
             FatSecretAPI fatsecret = new FatSecretAPI();
 
-            string response = await fatsecret.buscarAlimento(nomeAlimento);
+            string response = await fatsecret.buscarAlimento(""/*nomeAlimento*/);
 
             //ViewBag.FatSecret = response.foods.food[0].food_name;
-            /*
-            if (response.HasResults)
-            {
-                Console.WriteLine("Got " + response.foods.food.Count + " Results: \n\n");
-                var form = "id: {0}, \n - type: {1}, \n - name: {2}, \n - description: {3}";
-                foreach (var food in response.foods.food)
-                {
-                    Console.WriteLine(String.Format(form, food.food_id, food.food_type, food.food_name, food.food_description));
-                }
-            }*/
+
             return View();
         }
     }

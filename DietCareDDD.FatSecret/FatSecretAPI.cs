@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using OAuth;
 
@@ -20,29 +22,38 @@ namespace DietCareDDD.FatSecret
             const string method      = "foods.search";
             const string format      = "json";
 
-            var normalizedParameters = "oauth_consumer_key=" + consumerKey
+
+            var normalizedParameters = "format=" + format
+                                     + "&method=" + method
+                                     + "&oauth_consumer_key=" + consumerKey
+                                     + "&oauth_nonce=" + nonce
                                      + "&oauth_signature_method=" + signatureMethod
                                      + "&oauth_timestamp=" + timestamp
-                                     + "&oauth_nonce=" + nonce
-                                     + "&oauth_version=" + version;
+                                     + "&oauth_version=" + version
+                                     + "&search_expression=" + "banana";
+                                                           
             var httpMethod = "GET";
-            var encodedUri = OAuthTools.UrlEncodeStrict(baseURL);
+            var encodedUri = OAuthTools.UrlEncodeStrict(baseURL.Substring(0, baseURL.Length-1));
             var encodedNormalizedParameters = OAuthTools.UrlEncodeStrict(normalizedParameters);
             var baseSignature = httpMethod + "&" + encodedUri + "&" + encodedNormalizedParameters;
 
-            string signature = OAuthTools.GetSignature(OAuthSignatureMethod.HmacSha1,  OAuthSignatureTreatment.Escaped,  baseSignature, "5e1b6dc6e9e84451bc265d633b9fc0de");
+            string signature;
+
+            using (HMACSHA1 hmac = new HMACSHA1(Encoding.ASCII.GetBytes("5e1b6dc6e9e84451bc265d633b9fc0de&")))
+            {
+                byte[] hashPayLoad = hmac.ComputeHash(Encoding.ASCII.GetBytes(baseSignature));
+                signature = Convert.ToBase64String(hashPayLoad);
+            }
 
             string fullURL = baseURL + normalizedParameters 
-                                     + "&oauth_signature="        + signature
-                                     + "&method="                 + method
-                                     + "&format="                 + format
-                                     + "&search_expression="      + alimento;
+                                     + "&oauth_signature=" + signature;
 
             String responseText = await Task.Run(() =>
             {
                 try
                 {
                     HttpWebRequest request = WebRequest.Create(fullURL) as HttpWebRequest;
+                    request.Method = "GET";
                     WebResponse response = request.GetResponse();
                     Stream responseStream = response.GetResponseStream();
                     return new StreamReader(responseStream).ReadToEnd();
