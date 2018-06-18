@@ -19,11 +19,6 @@ namespace DietCareDDD.API.Clarifai
                 .ExecuteAsync();
 
             return res.RawBody;
-            // Print the concepts
-            //foreach (var concept in res.Get().Data)
-            //{
-            //    Console.WriteLine($"{concept.Name}: {concept.Value}");
-            //}
         }
     }
 }

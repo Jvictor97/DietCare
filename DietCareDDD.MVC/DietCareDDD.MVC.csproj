@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -350,10 +351,6 @@
     <ProjectReference Include="..\DietCareDDD.API\DietCareDDD.Clarifai.csproj">
       <Project>{af676e06-1813-4db7-b405-2d7d536e74d7}</Project>
       <Name>DietCareDDD.Clarifai</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DietCareDDD.API\FatSecret\FatSecretSharp.Services\FatSecretSharp.Services.csproj">
-      <Project>{7ee9d131-8463-4e0b-b04c-4dec49372819}</Project>
-      <Name>FatSecretSharp.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\DietCareDDD.Application\DietCareDDD.Application.csproj">
       <Project>{a29c2457-fc81-429f-94f1-96e891c62f90}</Project>

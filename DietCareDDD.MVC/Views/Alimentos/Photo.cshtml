@@ -13,8 +13,18 @@
         {
             <script>
                 $(function() {
-                    $("#clarifaiResponse").html("O alimento escolhido é: "+"@ViewBag.Alimento"+"<br>"+"No FatSecret: "+"@ViewBag.FatSecret");
+                    $("#clarifaiResponse").html("O alimento escolhido é: "+"@ViewBag.Alimento"+"<br>");
                 });
+            </script>
+        }
+
+        @if (@ViewBag.FatSecretSearch != null)
+        {
+            <script>
+                $(function () {
+                    $("#fatSecretResponse").html("O alimento no FatSecret: " + "@ViewBag.FatSecretSearch");
+                });
+
             </script>
         }
 
@@ -60,7 +70,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <video id="video" width="320" height="240" autoplay></video>
+            <!--<video id="video" width="320" height="240" autoplay></video>-->
             <br>
             <!-- <button onclick="abreVideo()" class="btn btn-primary">Abrir Câmera</button> -->
             <button id="snap" onclick="tiraFoto()" class="btn btn-danger">Tirar Foto</button>
@@ -76,9 +86,17 @@
 
 <hr/>
 <p id="clarifaiResponse"></p>
+<p id="fatSecretResponse"></p>
 
 @using (Ajax.BeginForm("Photo", "Alimentos", new AjaxOptions {HttpMethod = "POST"}, new { id = "ImageForm" }))
 {
     <input type="hidden" name="imageData" id="imageData"/>
     <!--<input value="Enviar" type="submit" class="btn btn-success"/>-->
+}
+
+@using (Ajax.BeginForm("Photo", "Alimentos", new AjaxOptions { HttpMethod = "POST" }, new { id = "Food" }))
+{
+    <input type="text" name="nomeDoAlimento" id="nomeDoAlimento"/>
+    <input type="text" name="numeroDeResultados" id="numeroDeResultados" />
+    <input type="submit" value="Pesquisar" class="btn btn-info"/>
 }
